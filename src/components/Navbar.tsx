@@ -10,6 +10,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
+import Logo from "@/components/Logo"
 
 const menuItems = [
   {
@@ -32,11 +33,14 @@ const menuItems = [
 export default function Navbar() {
   return (
     <nav className="border-b">
-      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-6">
+      <div className="flex items-center justify-between px-6 py-3">
         {/* Logo */}
-        <Link href="/" className="font-bold">
-          MyShop
+        <div>
+            <Link href="/" className="flex items-center gap-2">
+          <Logo />
+          <span className="font-bold">MyShop</span>
         </Link>
+        </div>
 
         {/* Navigation */}
         <NavigationMenu>
