@@ -24,6 +24,7 @@ export default function Hero() {
             A clean and scalable starter built with Next.js, Tailwind CSS and
             modern component patterns.
           </p>
+          
 
           <div className="mt-10 flex gap-4">
             <Link
