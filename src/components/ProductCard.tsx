@@ -1,5 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { useState } from 'react';
 
 type Product = {
   id: number;
@@ -7,28 +18,42 @@ type Product = {
   price: string;
   image: string;
 };
+const initialProduct = [
+  {id:1, name:"turquoise-dress",price:"$20",image:"turquoise-dress.jpg"}
+]
 
-export default function ProductCard({ product }: { product: Product }) {
+export default function ProductCard() {
+
+  const [product,setProduct] = useState(initialProduct)
   return (
-    <Link
-      href={`/products/${product.id}`}
-      className="group rounded-xl border border-border bg-background p-4 transition hover:shadow-md"
-    >
-      {/* Image */}
-      <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-muted">
-        <Image
-          src={product.image}
-          alt={product.name}
-          fill
-          className="object-cover transition group-hover:scale-105"
-        />
-      </div>
+    <Card className="flex flex-col justify-between max-w-2xs">
+      <CardHeader className="flex-col ml-15" >
+        <CardTitle >Card Title</CardTitle>
 
-      {/* Info */}
-      <div className="mt-4">
-        <h3 className="font-medium text-foreground">{product.name}</h3>
-        <p className="mt-1 text-sm text-muted-foreground">{product.price}</p>
-      </div>
-    </Link>
+        
+      </CardHeader>
+      <CardContent className="flex flex-col ml-4 justify-center  ">
+        <Image
+          src="/turquoise-dress.jpg"
+          alt="Product preview"
+          height={100}
+          width={200}
+          className="object-cover"
+          priority
+        ></Image>
+        <div>
+          <CardDescription className="text-black mt-2" >Blue Dress</CardDescription>
+        </div>
+      </CardContent>
+      <CardFooter className="flex ml-14 items-start gap-2">
+        <Button
+          className="rounded-md bg-foreground px-6 py-3 text-background transition hover:opacity-90"
+          size="sm"
+          variant="outline"
+        >
+          Ürünü Ekle
+        </Button>
+      </CardFooter>
+    </Card>
   );
 }
